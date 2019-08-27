@@ -11,4 +11,8 @@ public interface ReviewsRepository extends JpaRepository<Review, Long> {
     findByUserAndJob(Long user_id, Long job_id);
     @Query (value="Select AVG(rating) from reviews  where job_id=?1", nativeQuery = true)
     Float findAverageRating(Long job_id);
+    @Query(value = "Select * from reviews where user_id=?1",nativeQuery = true)
+    List<Review> findByUser(Long user_id);
+    @Query(value = "Select * from reviews where job_id=?1",nativeQuery = true)
+    List<Review> findByJob(Long job_id);
 }

@@ -1,7 +1,9 @@
 package com.example.gig.demo.user;
 
 
+import com.example.gig.demo.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -62,4 +64,13 @@ if(iid[0]==null)
 else
         return new Long(iid[0]);
     }
+
+    @DeleteMapping("/users/{user_id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String user_id){
+        User user=usersRepository.findById(Long.parseLong(user_id))
+                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", user_id));
+        usersRepository.delete(user);
+        return ResponseEntity.ok().build();
+    }
+
 }

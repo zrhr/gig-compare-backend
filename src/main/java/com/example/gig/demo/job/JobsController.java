@@ -1,7 +1,9 @@
 package com.example.gig.demo.job;
 
 
+import com.example.gig.demo.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,4 +36,12 @@ import java.util.Optional;
             System.out.println(user);
             return jobsRepository.save(user);
         }
+    @DeleteMapping("/gigs/{gig_id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String user_id){
+        Job user=jobsRepository.findById(Long.parseLong(user_id))
+                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", user_id));
+        jobsRepository.delete(user);
+        return ResponseEntity.ok().build();
+    }
+
 }

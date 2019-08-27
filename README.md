@@ -1,6 +1,7 @@
 This is a review management server created in Java Spring Boot
-## Server User Routes
 (All routes proceeded by /api/vl)
+## Server User Routes
+
 | Route Name   | Request Method | Example Request URL | Route           |
 | ------------ | -------------- | ------------------- | --------------- |
 | all users    | `GET`          | `/users`            | `/users`        |

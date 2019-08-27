@@ -33,10 +33,16 @@ import java.util.Optional;
 
         }
         @GetMapping("/reviews/{user_id}/{job_id}")
-        public List<Review> all(@PathVariable String user_id, @PathVariable String job_id) {
+        public List<Review> userJob(@PathVariable String user_id, @PathVariable String job_id) {
 
 return reviewsRepository.findByUserAndJob( Long.parseLong(user_id),Long.parseLong( job_id));
         }
+
+        @GetMapping("/rating/{job_id}")
+        public float averageRating(@PathVariable String job_id){
+            return this.reviewsRepository.findAverageRating(Long.parseLong(job_id));
+        }
+
         @PostMapping("/reviews/{user_id}/{job_id}")
         public Optional<Review> addOneAccount(@PathVariable long user_id, @PathVariable Long job_id,@RequestBody Review newComment) {
              if(newComment.getComment()==null)

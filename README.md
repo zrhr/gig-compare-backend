@@ -1,5 +1,5 @@
 This is a review management server created in Java Spring Boot
-(All routes proceeded by /api/vl)
+(All routes proceeded by /api/v1)
 ## Server User Routes
 
 | Route Name   | Request Method | Example Request URL | Route           |

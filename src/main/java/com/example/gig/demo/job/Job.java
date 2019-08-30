@@ -34,9 +34,28 @@ public class Job {
     private String headquarters;
     @Column
     private String location;
-
+    @Column
+    private String name;
+    @Column
+    private String type;
     public Job() {
             }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public long getId() {
         return id;

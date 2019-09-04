@@ -38,6 +38,27 @@ public class Job {
     private String name;
     @Column
     private String type;
+    @Column (length=65536)
+    private String summary;
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getWildcard() {
+        return wildcard;
+    }
+
+    public void setWildcard(String wildcard) {
+        this.wildcard = wildcard;
+    }
+
+    @Column
+    private String wildcard;
     public Job() {
             }
 

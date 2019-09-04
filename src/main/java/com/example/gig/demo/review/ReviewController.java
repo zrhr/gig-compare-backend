@@ -38,7 +38,8 @@ import java.util.Optional;
         @GetMapping("/reviews/{user_id}/{job_id}")
         public List<Review> userJob(@PathVariable String user_id, @PathVariable String job_id) {
 
-        return reviewsRepository.findByUserAndJob( Long.parseLong(user_id),Long.parseLong( job_id));
+            reviewsRepository.findByUserAndJob( Long.parseLong(user_id),Long.parseLong( job_id));
+            return reviewsRepository.findByUserAndJob( Long.parseLong(user_id),Long.parseLong( job_id));
         }
         @GetMapping("/reviews/user/{user_id}")
         public List<Review> userOnly(@PathVariable String user_id) {

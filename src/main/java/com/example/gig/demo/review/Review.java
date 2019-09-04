@@ -5,25 +5,35 @@ import com.example.gig.demo.job.Job;
 import com.example.gig.demo.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
-    @Entity
-    @Data
-    @Table(name = "reviews")
-    public class Review {
+@Entity
+@Data
+@Table(name = "reviews")
+
+public class Review {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
-@Column (length=65536)
-private String comment;
+        @Column (length=65536)
+        private String comment;
         @Column
         private int rating;
         @Column
         private boolean mod;
+        @CreationTimestamp
+        private LocalDateTime createDateTime;
+
+
         // This is a many-to-one relationship, it's not optional
         @ManyToOne(fetch = FetchType.LAZY, optional = false)
         // This is a join column that is non-nullable, called "user_id"
@@ -39,8 +49,11 @@ private String comment;
         // On delete, make sure that everything related is also deleted
         @OnDelete(action = OnDeleteAction.CASCADE)
         // Don't show this data when calling for statuses via an API call
-        @JsonIgnore
+       @JsonIgnore
         private Job job;
+
+
+
 
         public Review() {
         }

@@ -9,6 +9,7 @@ import javax.persistence.*;
     @Entity
     @Data
     @Table(name = "users")
+
     public class User {
 
         @Id
@@ -48,5 +49,6 @@ import javax.persistence.*;
         public void setPassword(String password) {
             this.password = password;
         }
+
     }
 

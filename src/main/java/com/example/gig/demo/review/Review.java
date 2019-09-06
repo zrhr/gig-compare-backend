@@ -30,6 +30,8 @@ public class Review {
         private int rating;
         @Column
         private boolean mod;
+        @Column
+        private String jobName;
         @CreationTimestamp
         private LocalDateTime createDateTime;
 
